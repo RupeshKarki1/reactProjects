@@ -1,34 +1,58 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
-
+import { useState, useEffect } from 'react';
 function App() {
-  const [count, setCount] = useState(0)
+  const [counter, setCounter] = useState(10);
+
+  useEffect(() => {
+    console.log("Counter updated to:", counter);
+  }, [counter]);
+
+  function addValue(){
+    if(counter >= 20){
+      console.log("counter is greater than 20, resetting to 10");
+      setCounter(10);
+    }else{
+      setCounter(counter + 1);
+    }
+  }
+
+  function addValue5(){
+    setCounter(counter + 5);
+  }
+  
+  function addValue5(){
+    setCounter(counter + 5);
+  }
+  function decreaseValue(){
+    if(counter <= 0){
+      console.log("counter is smaller than 0, setting counter to 0");
+      setCounter(0);
+    }else{
+      setCounter(counter - 1);
+    }
+  }
+
+  function resetValue(){
+    setCounter(10);
+    console.log("counter reset to 10");
+  }
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+   <>
+   <h1> Counter value: {counter} </h1>
+
+   <button onClick={addValue}> Add value </button>
+   <br />
+   <button onClick={addValue5}> +5 </button>
+   <br /> 
+
+
+   <button onClick={decreaseValue}> Decrease value </button>
+   <br />
+
+   <button onClick={resetValue}> Reset </button>
+   
+   </>
   )
 }
 
