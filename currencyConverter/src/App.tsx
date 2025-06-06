@@ -1,8 +1,9 @@
+import InputBox from "./components/InputBox"
 
 function App() {
   return (
     <>
-      <h1 className='bg-black text-white'>hello</h1>
+      <InputBox />
     </>
   )
 }
