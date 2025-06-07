@@ -6,7 +6,7 @@ export const TodoContext = createContext({
         {
             id: 1,
             todo: "Todo msg",
-            completedCheck: false
+            completed: false
         }
     ],
     addTodo: (todo)=>{},

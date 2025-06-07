@@ -7,11 +7,11 @@ export function TodoItem({todo}){
     const [todoMsg, setTodoMsg] = useState(todo.todo)
 
     const editTodo = ()=>{
-        updateTodo(todo.id, {...todo, todo:todoMsg})
+        updateTodo(todo.id, {todo:todoMsg})
     }
 
     const toggleCompleted = ()=>{
-        toggleComplete(todo.id)
+        toggleComplete(todo.id,{ todo: todoMsg})
     }
     return (
         <div
@@ -42,7 +42,10 @@ export function TodoItem({todo}){
 
                     if (isTodoEditable) {
                         editTodo();
-                    } else setIsTodoEditable((prev) => !prev);
+                        setIsTodoEditable(false)
+                    } else{
+                        setIsTodoEditable(true);
+                    } 
                 }}
                 disabled={todo.completed}
             >

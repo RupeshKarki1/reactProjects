@@ -8,7 +8,7 @@ function App() {
 
   // defining methods for todo context for addtodo, delete todo, update and toggle
   const addTodo = (todo)=>{
-    setTodos((prevTodos) => [{id: Date.now(), ...todo}, ...prevTodos])
+    setTodos((prevTodos) => [{id: Date.now(), ...todo, completed: false}, ...prevTodos])
   }
   // deleteTodo
   const deleteTodo = (id)=>{
@@ -18,14 +18,14 @@ function App() {
   // update Todo function
   const updateTodo = (id, todo)=>{
     setTodos((prevTodos)=> prevTodos.map((prevTodo)=>
-      (prevTodo.id === id ? todo: prevTodo))) 
+      (prevTodo.id === id ? {...prevTodo, ...todo} : prevTodo))) 
   }
 
   // toggle stuff
   const toggleComplete = (id)=>{
     setTodos((prevTodos)=> prevTodos.map((prevTodo)=> // mapping each prevtodo from the previous todo array ->prevTodos
-    (prevTodo.id === id)? {...prevTodo, completedCheck: //...prevTodo is destructuring the prevTodo obj(keeping it same while changing check)
-    !prevTodo.completedCheck} : prevTodo)) //if id matches change the completed check to inverse
+    (prevTodo.id === id)? {...prevTodo, completed: //...prevTodo is destructuring the prevTodo obj(keeping it same while changing check)
+    !prevTodo.completed} : prevTodo)) //if id matches change the completed check to inverse
   }
 
   useEffect(()=>{
