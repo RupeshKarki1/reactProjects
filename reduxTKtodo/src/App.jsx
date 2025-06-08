@@ -2,7 +2,10 @@
 function App() {
   return (
    <>
-    <h1 className='bg-black'>test</h1>
+   <div className="h-screen w-full bg-amber-200">
+    <h1 className='text-center text-4xl'>test</h1>
+   </div>
+    
   </>
   )
 }
